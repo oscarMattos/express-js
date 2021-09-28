@@ -25,9 +25,7 @@ router.route("/login").post((req, res) => {
               },
             });
           })()
-        : (() => {
-            res.send("Invalid Password");
-          })()
+        : res.send("Invalid Password")
     )
     .catch((error) => res.send(error));
 });
