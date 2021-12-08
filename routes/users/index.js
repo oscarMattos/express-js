@@ -1,12 +1,12 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
 const UserModel = require("../../models/user");
-const { hashingPassword } = require("../../utils");
+const { hashingPassword, verifyToken } = require("../../utils");
 
 {
   /* /users */
 }
+router.use("/users", verifyToken);
 router
   .route("/users")
   .get((req, res) =>

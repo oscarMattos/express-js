@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const UserModel = require("../../models/user");
-const { hashingPassword, isValidPassword } = require("../../utils");
+const { isValidPassword } = require("../../utils");
 
 {
   /* /login */

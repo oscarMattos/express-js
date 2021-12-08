@@ -7,6 +7,9 @@ const express = require("express"),
 app.use(express.json()); // Parse json request/response
 
 // Routes
+const token = require("./routes/token");
+app.use("/api", token);
+
 const login = require("./routes/login");
 app.use("/api", login);
 
