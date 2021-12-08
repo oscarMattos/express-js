@@ -1,6 +1,6 @@
 const UserModel = require("../../../models/user");
 
-const editUser = (req, res) => {
+const editUser = (req, res, next) => {
   let {
     params: { id },
     body,

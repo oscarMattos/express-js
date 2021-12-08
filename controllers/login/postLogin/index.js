@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const UserModel = require("../../../models/user");
 const { isValidPassword } = require("../../../utils");
 
-const postLogin = (req, res) => {
+const postLogin = (req, res, next) => {
   let {
     body: { name, email, password },
   } = req;

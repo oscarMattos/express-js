@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const getToken = (req, res) => {
+const getToken = (req, res, next) => {
   let token = jwt.sign({ _id: "token" }, process.env.SECRET);
   token
     ? res.send(token)

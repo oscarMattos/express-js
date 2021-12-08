@@ -1,7 +1,7 @@
 const UserModel = require("../../../models/user");
 const { hashingPassword } = require("../../../utils");
 
-const postUser = (req, res) => {
+const postUser = (req, res, next) => {
   let {
     body: { name, email, password },
   } = req;

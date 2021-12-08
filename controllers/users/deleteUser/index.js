@@ -1,6 +1,6 @@
 const UserModel = require("../../../models/user");
 
-const deleteUser = (req, res) => {
+const deleteUser = (req, res, next) => {
   let {
     params: { id },
   } = req;

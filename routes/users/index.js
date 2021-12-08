@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { verifyToken } = require("../../utils");
-
 const {
   deleteUser,
   editUser,
@@ -9,6 +7,7 @@ const {
   getUsers,
   postUser,
 } = require("../../controllers/users");
+const { verifyToken } = require("../../utils");
 
 router.use("/users", verifyToken);
 
