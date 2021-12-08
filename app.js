@@ -11,12 +11,12 @@ const login = require("./routes/login"),
   token = require("./routes/token"),
   users = require("./routes/users");
 
-app.use("/api", [login, token, users]);
+app.use("/api", [login, token, users]); 
 
 // Server
 app.listen("3000", (err, res) =>
   err
-    ? console.log(`Server Conexion Error - ${err}`)
+    ? console.log(`Server Conexion Error - ${err}`) 
     : console.log(`Sever is running`)
 );
 

@@ -1,78 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const UserModel = require("../../models/user");
-const { hashingPassword, verifyToken } = require("../../utils");
+const { verifyToken } = require("../../utils");
 
-{
-  /* /users */
-}
+const {
+  deleteUser,
+  editUser,
+  getUser,
+  getUsers,
+  postUser,
+} = require("../../controllers/users");
+
 router.use("/users", verifyToken);
-router
-  .route("/users")
-  .get((req, res) =>
-    UserModel.find()
-      .then((data) => res.send(data))
-      .catch((error) => res.send(error))
-  )
-  .post((req, res) => {
-    let {
-      body: { name, email, password },
-    } = req;
 
-    let user, error;
+router.route("/users").get(getUsers).post(postUser);
 
-    user = new UserModel({
-      name,
-      email,
-      password,
-    });
-
-    error = user.validateSync();
-
-    error
-      ? res.send(error)
-      : (() => {
-          user.password = hashingPassword(password);
-
-          user
-            .save()
-            .then((data) => res.send(data))
-            .catch((error) => res.send(error));
-        })();
-  });
-
-{
-  /* /users/:id */
-}
-router
-  .route("/users/:id")
-  .delete((req, res) => {
-    let {
-      params: { id },
-    } = req;
-
-    UserModel.remove({ _id: id })
-      .then((data) => res.send(data))
-      .catch((error) => res.send(error));
-  })
-  .get((req, res) => {
-    let {
-      params: { id },
-    } = req;
-
-    UserModel.findById(id)
-      .then((data) => res.send(data))
-      .catch((error) => res.send(error));
-  })
-  .patch((req, res) => {
-    let {
-      params: { id },
-      body,
-    } = req;
-
-    UserModel.updateOne({ _id: id }, { $set: body })
-      .then((data) => res.send(data))
-      .catch((error) => res.send(error));
-  });
+router.route("/users/:id").delete(deleteUser).get(getUser).patch(editUser);
 
 module.exports = router;
