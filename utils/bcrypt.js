@@ -1,10 +1,7 @@
 const bcrypt = require("bcrypt");
 
-const hashingPassword = (password) => {
-  let salt = bcrypt.genSaltSync(6),
-    hashedPassword = bcrypt.hashSync(password, salt);
-  return hashedPassword;
-};
+const hashingPassword = (password) =>
+  bcrypt.hashSync(password, bcrypt.genSaltSync(6));
 
 const isValidPassword = (password, hashedPassword) =>
   bcrypt.compareSync(password, hashedPassword);
