@@ -14,11 +14,11 @@ const users = require("./routes/users");
 app.use("/api", users);
 
 // Server
-app.listen("3000", (err, res) => {
+app.listen("3000", (err, res) =>
   err
     ? console.log(`Server Conexion Error - ${err}`)
-    : console.log("Sever is running");
-});
+    : console.log(`Sever is running`)
+);
 
 // Data Base Conexion
 mongoose.connect(process.env.DB_URL, (err, res) =>
