@@ -13,7 +13,7 @@ router.route("/login").post((req, res) => {
   } = req;
 
   UserModel.findOne({ email })
-    .then((user) => (!user ? res.send("Invalid User") : user))
+    .then((user) => (user ? user : res.send("Invalid User")))
     .then((user) =>
       isValidPassword(password, user.password)
         ? (() => {
