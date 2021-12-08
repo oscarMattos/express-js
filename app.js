@@ -1,7 +1,7 @@
-const express = require("express");
-const app = express();
-const env = require("dotenv/config");
-const mongoose = require("mongoose");
+const express = require("express"),
+  app = express(),
+  env = require("dotenv/config"),
+  mongoose = require("mongoose");
 
 // Global Middlawares
 app.use(express.json()); // Parse json request/response

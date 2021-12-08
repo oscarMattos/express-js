@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const jwt = require("jsonwebtoken");
+const router = express.Router();
 const UserModel = require("../../models/user");
 const { hashingPassword, isValidPassword } = require("../../utils");
 
