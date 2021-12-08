@@ -7,14 +7,11 @@ const express = require("express"),
 app.use(express.json()); // Parse json request/response
 
 // Routes
-const token = require("./routes/token");
-app.use("/api", token);
+const login = require("./routes/login"),
+  token = require("./routes/token"),
+  users = require("./routes/users");
 
-const login = require("./routes/login");
-app.use("/api", login);
-
-const users = require("./routes/users");
-app.use("/api", users);
+app.use("/api", [login, token, users]);
 
 // Server
 app.listen("3000", (err, res) =>
