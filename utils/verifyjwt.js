@@ -6,6 +6,7 @@ const verifyToken = (req, res, next) => {
   token
     ? (() => {
         let verifiedToken = jwt.verify(token, process.env.SECRET);
+
         verifiedToken
           ? (() => {
               req.user = verifiedToken;
